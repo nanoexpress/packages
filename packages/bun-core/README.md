@@ -18,6 +18,21 @@ bun add @nanoexpress/bun-core
 
 See [example](./example/basic.ts) for how it works
 
+```ts
+import { send } from '../aot' with { type: 'macro' };
+
+const server = Bun.serve({
+  async fetch(req) {
+    // Below JSON becomes string which reduces `JSON.stringify` overhead for every request
+    const { response, options } = send({ status: 'success' }, 200);
+    return new Response(response, options);
+  }
+});
+
+console.log(`Listening at ${server.port}`);
+
+```
+
 ## License
 
 MIT

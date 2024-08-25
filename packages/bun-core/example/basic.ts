@@ -5,11 +5,13 @@ const server = Bun.serve({
     const url = new URL(req.url);
 
     if (url.pathname === '/json' && req.method === 'GET') {
+      // Below JSON becomes string which reduces `JSON.stringify` overhead for every request
       const { response, options } = send({ data: { input: 1 } });
 
       return new Response(response, options);
     }
 
+    // Below JSON becomes string which reduces `JSON.stringify` overhead for every request
     const { response, options } = send({ status: 'error' }, 404);
     return new Response(response, options);
   }

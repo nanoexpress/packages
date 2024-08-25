@@ -9,9 +9,6 @@
       "macro": "./aot.ts"
     }
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
   "license": "Apache-2.0",
   "devDependencies": {
