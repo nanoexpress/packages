@@ -1,0 +1,14 @@
+{
+  "name": "@nanoexpress/workspace",
+  "private": true,
+  "type": "module",
+  "workspaces": ["packages/*"],
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@types/bun": "^1.1.8",
+    "dprint": "^0.47.2",
+    "esbuild": "^0.23.1",
+    "typescript": "^5.5.2"
+  },
+  "trustedDependencies": ["@biomejs/biome", "dprint"]
+}
