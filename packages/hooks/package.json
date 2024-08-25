@@ -1,0 +1,25 @@
+{
+  "name": "@nanoexpress/hooks",
+  "version": "0.0.1",
+  "description": "Hooks for nanoexpress",
+  "main": "cjs/ne-hook.js",
+  "module": "esm/ne-hook.js",
+  "typings": "typings/hooks.d.ts",
+  "exports": {
+    "import": "./esm/ne-hook.js",
+    "require": "./cjs/ne-hook.js",
+    "types": "./typings/hooks.d.ts",
+    "default": "./cjs/ne-hook.js"
+  },
+  "files": ["esm", "cjs"],
+  "scripts": {
+    "build:cjs": "rm -rf cjs && esbuild ./src/ne-hook.ts --outdir=cjs --packages=external --sourcemap=external --platform=node --format=cjs --target=es2020 --bundle",
+    "build:esm": "rm -rf esm && esbuild ./src/ne-hook.ts --outdir=esm --packages=external --sourcemap=external --platform=node --format=esm --target=es2020 --bundle",
+    "build:dts": "rm -rf typings && tsc ./src/ne-hook.ts --declaration --emitDeclarationOnly --outFile typings/hooks.js",
+    "build": "bun run build:dts && bun run build:esm && bun run build:cjs",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": ["hooks", "use-effect", "use-memo"],
+  "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "license": "Apache-2.0"
+}
