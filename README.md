@@ -1,6 +1,6 @@
 # @nanoexpress/packages
 
-Monorepo of all tools, packages, helpers and utils which required to build future of nanoexpress
+Monorepo of all tools, packages, helpers and utils which required to build the future of nanoexpress
 
 ## Packages
 
