@@ -1,0 +1,12 @@
+{
+  "name": "@nanoexpress/platform-detection",
+  "version": "0.0.1",
+  "author": "Davlatjon Shavkatov <opensource@dalisoft.uz>",
+  "main": "index.js",
+  "typings": "index.d.ts",
+  "files": ["index.js", "index.d.ts"],
+  "type": "commonjs",
+  "description": "Platform detection for nanoexpress ecosystem",
+  "keywords": [],
+  "license": "Apache-2.0"
+}
