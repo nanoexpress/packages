@@ -17,6 +17,7 @@ Monorepo of all tools, packages, helpers and utils which required to build the f
 | ------------------------- | ------- | ---- | --- | ------------ | ------------ | ---------- |
 | `core/platform-detection` | ✅      | ✅   | ✅  | ？           | Public       | Apache-2.0 |
 | `core/aot`                | ⚠️      | ❌   | ✅  | ❌           | Public       | Apache-2.0 |
+| `fast-path-parse`         | ✍️      | ✍️   | ✍️  | ✍️           | Public       | MIT        |
 | `library/validation`      | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
 | `library/serialize`       | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
 | `library/hooks`           | ✅      | ✅   | ✅  | ？           | Public       | Apache-2.0 |
