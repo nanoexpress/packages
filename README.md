@@ -13,26 +13,26 @@ Monorepo of all tools, packages, helpers and utils which required to build the f
 - ？– Not tested but could work
 - ❌ – Probably does not happen
 
-| Packages / Runtime        | Node.js | Deno | Bun | Serverless\* | Availability | License    |
-| ------------------------- | ------- | ---- | --- | ------------ | ------------ | ---------- |
-| `core/platform-detection` | ✅      | ✅   | ✅  | ？           | Public       | Apache-2.0 |
-| `core/aot`                | ⚠️      | ❌   | ✅  | ❌           | Public       | Apache-2.0 |
-| `fast-path-parse`         | ✅      | ✅   | ✅  | ✅           | Public       | MIT        |
-| `fast-query-parse`        | ✅      | ✅   | ✅  | ✅           | Public       | MIT        |
-| `library/validation`      | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
-| `library/serialize`       | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
-| `library/hooks`           | ✅      | ✅   | ✅  | ？           | Public       | Apache-2.0 |
-| `library/openapi-docs`    | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Public       | Apache-2.0 |
-| `library/middlewares`     | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
-| `library/defines`         | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
-| `framework/graphql`       | 🕖      | 🕖   | 🕖  | ⚠️           | Public       | GPL-3.0    |
-| `framework/orm`           | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Public       | GPL-3.0    |
-| `framework/ddos-rate`     | 🕖      | 🕖   | 🕖  | ❌           | Public       | GPL-3.0    |
-| `framework/docker`        | 🕖      | 🕖   | 🕖  | ❌           | Public       | GPL-3.0    |
-| `framework/protocols`     | ⚠️      | ⚠️   | ⚠️  | ❌           | Private      | Business   |
-| `framework/api-codegen`   | ⚠️      | ⚠️   | ⚠️  | ❌           | Private      | Business   |
-| `framework/postman-gen`   | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Private      | Business   |
-| `framework/nginx-api`     | 🕖      | 🕖   | 🕖  | ❌           | Private      | Business   |
-| `framework/modules`       | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Private      | Business   |
+| Kind        | Packages / Runtime   | Node.js | Deno | Bun | Serverless\* | Availability | License    |
+| ----------- | -------------------- | ------- | ---- | --- | ------------ | ------------ | ---------- |
+| `core`      | `platform-detection` | ✅      | ✅   | ✅  | ？           | Public       | Apache-2.0 |
+| `core`      | `aot`                | ⚠️      | ❌   | ✅  | ❌           | Public       | Apache-2.0 |
+| `all`       | `hooks`              | ✅      | ✅   | ✅  | ？           | Public       | Apache-2.0 |
+| `all`       | `fast-path-parse`    | ✅      | ✅   | ✅  | ✅           | Public       | MIT        |
+| `all`       | `fast-query-parse`   | ✅      | ✅   | ✅  | ✅           | Public       | MIT        |
+| `library`   | `validation`         | ✍️      | 🕖   | ✍️  | ✍️           | Public       | Apache-2.0 |
+| `library`   | `serialize`          | ✍️      | 🕖   | ✍️  | ✍️           | Public       | Apache-2.0 |
+| `library`   | `openapi-docs`       | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Public       | Apache-2.0 |
+| `library`   | `middlewares`        | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
+| `library`   | `defines`            | 🕖      | 🕖   | 🕖  | 🕖           | Public       | Apache-2.0 |
+| `framework` | `graphql`            | 🕖      | 🕖   | 🕖  | ⚠️           | Public       | GPL-3.0    |
+| `framework` | `orm`                | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Public       | GPL-3.0    |
+| `framework` | `ddos-rate`          | 🕖      | 🕖   | 🕖  | ❌           | Public       | GPL-3.0    |
+| `framework` | `docker`             | 🕖      | 🕖   | 🕖  | ❌           | Public       | GPL-3.0    |
+| `framework` | `protocols`          | ⚠️      | ⚠️   | ⚠️  | ❌           | Private      | Business   |
+| `framework` | `api-codegen`        | ⚠️      | ⚠️   | ⚠️  | ❌           | Private      | Business   |
+| `framework` | `postman-gen`        | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Private      | Business   |
+| `framework` | `nginx-api`          | 🕖      | 🕖   | 🕖  | ❌           | Private      | Business   |
+| `framework` | `modules`            | ⚠️      | ⚠️   | ⚠️  | ⚠️           | Private      | Business   |
 
 > - \* – Serverless like Cloudflare Workers or Netlify Functions
