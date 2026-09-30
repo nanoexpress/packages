@@ -2,7 +2,9 @@
   "name": "@nanoexpress/bun-core",
   "version": "0.0.1",
   "description": "nanoexpress Core for Bun runtime",
-  "files": ["aot.ts"],
+  "files": [
+    "aot.ts"
+  ],
   "exports": {
     "./aot": {
       "default": "./aot.ts",

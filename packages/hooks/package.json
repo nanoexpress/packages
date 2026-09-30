@@ -4,7 +4,7 @@
   "description": "Hooks for nanoexpress",
   "main": "cjs/ne-hook.js",
   "module": "esm/ne-hook.js",
-  "typings": "typings/hooks.d.ts",
+  "typings": "typings/ne-hook.d.ts",
   "exports": {
     "import": "./esm/ne-hook.js",
     "require": "./cjs/ne-hook.js",
@@ -18,7 +18,7 @@
   "scripts": {
     "build:cjs": "rm -rf cjs && bun build ./src/ne-hook.ts --outdir=cjs --packages=external --sourcemap=external --platform=node --format=cjs --target=node",
     "build:esm": "rm -rf esm && bun build ./src/ne-hook.ts --outdir=esm --packages=external --sourcemap=external --platform=node --format=esm --target=node",
-    "build:dts": "rm -rf typings && tsc ./src/ne-hook.ts --declaration --emitDeclarationOnly --outFile typings/hooks.js",
+    "build:dts": "rm -rf typings && tsc --ignoreConfig ./src/ne-hook.ts --declaration --emitDeclarationOnly --declarationDir typings --lib es2020 --types node,bun --strict --target es2020 --module esnext --moduleResolution bundler --skipLibCheck",
     "build": "bun run build:dts && bun run build:esm && bun run build:cjs",
     "prepublishOnly": "bun run build"
   },

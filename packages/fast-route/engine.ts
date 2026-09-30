@@ -1,15 +1,15 @@
-import { detect } from "@nanoexpress/platform-detection";
-import ExtremeRouter, { param, regexParam, wildcard } from "extreme-router";
-import FindMyWay from "find-my-way";
+import { detect } from '@nanoexpress/platform-detection';
+import ExtremeRouter, { param, regexParam, wildcard } from 'extreme-router';
+import FindMyWay from 'find-my-way';
 
 export type RouteMethod =
-  | "GET"
-  | "HEAD"
-  | "OPTIONS"
-  | "POST"
-  | "PUT"
-  | "PATCH"
-  | "DELETE";
+  | 'GET'
+  | 'HEAD'
+  | 'OPTIONS'
+  | 'POST'
+  | 'PUT'
+  | 'PATCH'
+  | 'DELETE';
 
 type GlobalContext = Record<string, unknown>;
 type LocalContext = Record<string, unknown>;
@@ -25,7 +25,7 @@ export class Router<
 > {
   private globalCtx: TGlobalContext;
   private router!: ExtremeRouter<{
-    handler: Partial<Record<RouteMethod | "ALL", TCallback[]>>;
+    handler: Partial<Record<RouteMethod | 'ALL', TCallback[]>>;
   }>;
   constructor(globalContext = {} as TGlobalContext) {
     this.globalCtx = globalContext as TGlobalContext;
@@ -34,20 +34,20 @@ export class Router<
   }
   private _initialize() {
     switch (detect()) {
-      case "node":
-      case "cloudflare-worker": {
+      case 'node':
+      case 'cloudflare-worker': {
         this.router = new ExtremeRouter({
           allowRegisterUpdateExisting: true,
-          skipPluginValidation: true,
+          skipPluginValidation: true
         });
 
         this.router.use(param).use(wildcard).use(regexParam);
         break;
       }
-      case "bun": {
+      case 'bun': {
         const routes: Record<
           string,
-          { handler: Partial<Record<RouteMethod | "ALL", TCallback[]>> }
+          { handler: Partial<Record<RouteMethod | 'ALL', TCallback[]>> }
         > = {};
 
         this.router = {} as never;
@@ -108,11 +108,11 @@ export class Router<
     }
   }
   private _method(
-    type: RouteMethod | "ALL",
+    type: RouteMethod | 'ALL',
     routes: Array<string | TCallback>
   ) {
-    if (routes.every((route) => typeof route === "function")) {
-      const ref = this.router.register("/*");
+    if (routes.every((route) => typeof route === 'function')) {
+      const ref = this.router.register('/*');
 
       if (!ref.handler) {
         ref.handler = {};
@@ -124,8 +124,8 @@ export class Router<
 
       ref.handler[type].push(...routes);
     } else if (
-      typeof routes[0] === "string" &&
-      routes.slice(1).every((route) => typeof route === "function")
+      typeof routes[0] === 'string' &&
+      routes.slice(1).every((route) => typeof route === 'function')
     ) {
       const [path, ..._routes] = routes as [string, ...T[]];
       const ref = this.router.register(path);
@@ -144,28 +144,28 @@ export class Router<
     return this;
   }
   use(...routes: Array<string | TCallback>) {
-    return this._method("ALL", routes);
+    return this._method('ALL', routes);
   }
   all(...routes: Array<string | TCallback>) {
     return this.use(...routes);
   }
   get(...routes: Array<string | TCallback>) {
-    return this._method("GET", routes);
+    return this._method('GET', routes);
   }
   head(...routes: Array<string | TCallback>) {
-    return this._method("HEAD", routes);
+    return this._method('HEAD', routes);
   }
   post(...routes: Array<string | TCallback>) {
-    return this._method("POST", routes);
+    return this._method('POST', routes);
   }
   put(...routes: Array<string | TCallback>) {
-    return this._method("PUT", routes);
+    return this._method('PUT', routes);
   }
   patch(...routes: Array<string | TCallback>) {
-    return this._method("PATCH", routes);
+    return this._method('PATCH', routes);
   }
   delete(...routes: Array<string | TCallback>) {
-    return this._method("DELETE", routes);
+    return this._method('DELETE', routes);
   }
 
   /**
@@ -235,86 +235,86 @@ export class Router<
 }
 
 const engine = new Router({
-  database: { driver: "postgres" },
+  database: { driver: 'postgres' }
 });
 
 engine
   .use(async (globalContext) => {
-    console.log("[RE] all middlewares", { globalContext });
+    console.log('[RE] all middlewares', { globalContext });
   })
-  .use("/static/*", async (globalContext) => {
-    console.log("[RE] static middlewares", { globalContext });
+  .use('/static/*', async (globalContext) => {
+    console.log('[RE] static middlewares', { globalContext });
   });
 
-engine.get("/static/favicon.ico", async (globalContext) => {
-  console.log("[RE] favicon ico", { globalContext });
+engine.get('/static/favicon.ico', async (globalContext) => {
+  console.log('[RE] favicon ico', { globalContext });
 });
 
-engine.lookup("GET", "/static/favicon.ico");
+engine.lookup('GET', '/static/favicon.ico');
 
-if (typeof Bun !== "undefined") {
+if (typeof Bun !== 'undefined') {
   const serve = Bun.serve({
     port: 32880,
     reusePort: true,
     routes: {
-      "/*": (req) => {
-        console.log("[BS] all middlewares");
+      '/*': (req) => {
+        console.log('[BS] all middlewares');
 
-        return new Response("all middlewares");
+        return new Response('all middlewares');
       },
-      "/static/*": (_req) => {
-        console.log("[BS] static middlewares");
+      '/static/*': (_req) => {
+        console.log('[BS] static middlewares');
 
-        return new Response("static middlewares");
+        return new Response('static middlewares');
       },
-      "/wc/*": (req) => {
-        console.log("[BS] wildcard middlewares", { path: req.url });
+      '/wc/*': (req) => {
+        console.log('[BS] wildcard middlewares', { path: req.url });
 
-        return new Response("wildcard middlewares " + req.url);
+        return new Response('wildcard middlewares ' + req.url);
       },
-      "/id/:id": (req) => {
-        console.log("[BS] dynamic id middlewares", {
+      '/id/:id': (req) => {
+        console.log('[BS] dynamic id middlewares', {
           path: req.url,
-          id: req.params.id,
+          id: req.params.id
         });
 
-        return new Response("dynamic id middlewares: " + req.params.id);
+        return new Response('dynamic id middlewares: ' + req.params.id);
       },
-      "/static/favicon.ico": {
+      '/static/favicon.ico': {
         GET: (_req) => {
-          console.log("[BS] favicon ico");
+          console.log('[BS] favicon ico');
 
-          return new Response("favicon ico");
-        },
-      },
+          return new Response('favicon ico');
+        }
+      }
     },
     fetch() {
-      return new Response("Not found", { status: 404 });
-    },
+      return new Response('Not found', { status: 404 });
+    }
   });
   const mockUri = new URL(
-    "/static/favicon.ico",
+    '/static/favicon.ico',
     `http://localhost:${serve.port}`
   );
   await fetch(mockUri.toString(), {
-    method: "GET",
+    method: 'GET'
   });
 }
 
 const fmw = FindMyWay({
   defaultRoute() {
     return false;
-  },
+  }
 });
 
-fmw.on("GET", "/*", () => {
-  console.log("[FMW] all middlewares");
+fmw.on('GET', '/*', () => {
+  console.log('[FMW] all middlewares');
 });
-fmw.on("GET", "/static/*", () => {
-  console.log("[FMW] static middlewares");
+fmw.on('GET', '/static/*', () => {
+  console.log('[FMW] static middlewares');
 });
-fmw.on("GET", "/static/favicon.ico", () => {
-  console.log("[FMW] favicon ico");
+fmw.on('GET', '/static/favicon.ico', () => {
+  console.log('[FMW] favicon ico');
 });
 
-fmw.lookup({ method: "GET", url: "/static/favicon.ico" } as never, {} as never);
+fmw.lookup({ method: 'GET', url: '/static/favicon.ico' } as never, {} as never);

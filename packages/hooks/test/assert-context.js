@@ -1,4 +1,4 @@
-import assert from "assert";
+import assert from 'assert';
 
 class AssertContext {
   constructor() {
@@ -64,7 +64,7 @@ class AssertContext {
       assert.deepEqual(
         this.testCount,
         this.expectedCount,
-        "Tests does not match expected count"
+        'Tests does not match expected count'
       );
     }
 
@@ -75,7 +75,7 @@ class AssertContext {
       assert.deepEqual(
         this.globalTestCount,
         this.expectedGlobalCount,
-        "Tests does not match global expected count"
+        'Tests does not match global expected count'
       );
     }
 
