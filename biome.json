@@ -9,7 +9,13 @@
     "lineEnding": "lf"
   },
   "linter": {
-    "enabled": false
+    "enabled": false,
+    "rules": {
+      "correctness": {
+        "noUnusedVariables": "warn",
+        "noUnusedFunctionParameters": "warn"
+      }
+    }
   },
   "javascript": {
     "formatter": {
@@ -38,6 +44,15 @@
     }
   },
   "files": {
-    "includes": ["**", "!packages/*/example/**", "!packages/*/examples/**"]
+    "includes": [
+      "**",
+      "!packages/fast-route",
+      "!packages/*/example",
+      "!packages/*/examples",
+      "!**/cjs",
+      "!**/esm",
+      "!**/typings",
+      "!**/node_modules"
+    ]
   }
 }
