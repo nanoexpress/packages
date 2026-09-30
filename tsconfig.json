@@ -1,8 +1,14 @@
 {
   "include": ["packages"],
+  "exclude": [
+    "packages/fast-route",
+    "packages/*/example",
+    "packages/*/examples"
+  ],
   "compilerOptions": {
     // Enable latest features
     "lib": ["es2020"],
+    "types": ["node", "bun"],
     "target": "es2020",
     "module": "esnext",
     "moduleDetection": "force",
@@ -10,7 +16,7 @@
     "allowJs": true,
 
     // Bundler mode
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "allowSyntheticDefaultImports": true,
     "verbatimModuleSyntax": true,

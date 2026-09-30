@@ -29,5 +29,15 @@
     "formatter": {
       "enabled": true
     }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "off"
+      }
+    }
+  },
+  "files": {
+    "includes": ["**", "!packages/*/example/**", "!packages/*/examples/**"]
   }
 }

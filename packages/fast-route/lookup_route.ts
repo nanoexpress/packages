@@ -1,9 +1,9 @@
-import { build_route } from "./build_route.ts";
-import { HTTP_METHOD_ALL, ORDER } from "./constants.ts";
-import type { BuildRoute, HttpMethod } from "./types";
-import { group_route } from "./utils/group_route.ts";
-import { segment_routes } from "./utils/segment_routes.ts";
-import { sort_routes } from "./utils/sort_routes.ts";
+import { build_route } from './build_route.ts';
+import { HTTP_METHOD_ALL, ORDER } from './constants.ts';
+import type { BuildRoute, HttpMethod } from './types';
+import { group_route } from './utils/group_route.ts';
+import { segment_routes } from './utils/segment_routes.ts';
+import { sort_routes } from './utils/sort_routes.ts';
 
 export function lookup_route<THandler extends (...args: any[]) => any>(
   ...routes: BuildRoute<THandler>[]
@@ -48,7 +48,7 @@ export function lookup_route<THandler extends (...args: any[]) => any>(
                 segment: is_segment,
                 position,
                 size,
-                last,
+                last
               } = route.segments.segments[s];
 
               if (is_segment) {
@@ -56,7 +56,7 @@ export function lookup_route<THandler extends (...args: any[]) => any>(
                   all_match =
                     all_match && pathname.substring(position).length > 0;
                 } else {
-                  const nextIndex = pathname.indexOf("/", position + 1);
+                  const nextIndex = pathname.indexOf('/', position + 1);
 
                   all_match =
                     all_match &&
@@ -87,12 +87,12 @@ export function lookup_route<THandler extends (...args: any[]) => any>(
           break;
         }
         case ORDER.WILDCARD: {
-          console.log("not supports yet");
+          console.log('not supports yet');
 
           break;
         }
         case ORDER.ARRAY: {
-          console.log("not supports yet");
+          console.log('not supports yet');
 
           break;
         }
@@ -111,14 +111,14 @@ export function lookup_route<THandler extends (...args: any[]) => any>(
 
 console.log(
   lookup_route<(...args: any[]) => any>(
-    build_route("GET", "/foo", () => {
-      console.log("all shit");
+    build_route('GET', '/foo', () => {
+      console.log('all shit');
     }),
-    build_route("GET", "/foo", () => {
-      return "/foo executed";
+    build_route('GET', '/foo', () => {
+      return '/foo executed';
     }),
-    build_route("GET", "/foo/:id", ({ id }) => {
+    build_route('GET', '/foo/:id', ({ id }) => {
       return `/foo/${id} executed`;
     })
-  )("GET", "/foo")
+  )('GET', '/foo')
 );
