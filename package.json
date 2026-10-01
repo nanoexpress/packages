@@ -7,13 +7,14 @@
   ],
   "scripts": {
     "check-types": "tsc --noEmit",
-    "lint": "oxlint ."
+    "lint": "oxlint . && rumdl check ."
   },
   "devDependencies": {
     "@biomejs/biome": "^2.5.15",
     "@types/bun": "^1.3.4",
     "@types/node": "^26.6.3",
     "oxlint": "^1.86.0",
+    "rumdl": "^0.2.78",
     "typescript": "^7.0.2"
   },
   "trustedDependencies": [
