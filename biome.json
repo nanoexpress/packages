@@ -63,6 +63,7 @@
       "!**/dist",
       "!**/coverage",
       "!**/bench.tmp.mjs",
+      "!**/.rumdl_cache",
       "!**/node_modules"
     ]
   }
