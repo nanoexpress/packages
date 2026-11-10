@@ -1,5 +1,5 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/latest/schema.json",
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
@@ -7,6 +7,14 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineEnding": "lf"
+  },
+  "markdown": {
+    "formatter": { "enabled": false },
+    "linter": { "enabled": false }
+  },
+  "yaml": {
+    "formatter": { "enabled": false },
+    "linter": { "enabled": false }
   },
   "linter": {
     "enabled": false,
@@ -52,6 +60,9 @@
       "!**/cjs",
       "!**/esm",
       "!**/typings",
+      "!**/dist",
+      "!**/coverage",
+      "!**/bench.tmp.mjs",
       "!**/node_modules"
     ]
   }
